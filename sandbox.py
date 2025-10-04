@@ -4,15 +4,6 @@ from command import Command
 from src.camera import Detection
 
 
-# IMPLEMENTATION PLAN
-# - Import `Flask`, `Response`, `render_template_string`, `Detection`, and `Command`; create a single Flask app instance plus long-lived `Detection` and `Command` objects to reuse the camera stream and base connection.
-# - Mirror the frame generator pattern from `OLD/shadowfax/follow_person_simple.py` using `Detection.get_frame()` for capture and `Detection.detect_object()` for optional annotations; ensure each loop encodes JPEG bytes and yields the multipart payload.
-# - Add a `/stream` route that returns `Response(stream_frames(), mimetype="multipart/x-mixed-replace; boundary=frame")` so the browser can display the MJPEG feed.
-# - Create a minimal `index` view that serves an inline HTML template containing an `<img>` tag pointed at `/stream`; include a headline/description if helpful.
-# - Tie in `Command` by issuing a neutral `drive(0, 0)` when the generator exits so the base stops if the stream breaks, reusing the helper semantics from `command.py`.
-# - Leave the `if __name__ == "__main__"` block to run the Flask dev server with the existing host/port configuration.
-
-
 app = Flask(__name__)
 detection = Detection()
 command = Command()
