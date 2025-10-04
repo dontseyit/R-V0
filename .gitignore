@@ -1,0 +1,15 @@
+# Python bytecode and cache directories
+__pycache__/
+*.py[cod]
+
+# Virtual environment directories
+.venv/
+venv/
+env/
+
+# Editor settings (VS Code)
+.vscode/
+
+# macOS filesystem artifacts
+.DS_Store
+*.DS_Store
